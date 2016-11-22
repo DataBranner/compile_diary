@@ -36,6 +36,7 @@ where `n` is the maximum age in hours that is to be included. This second progra
 
 ### To do
 
+ * Probably should not rely on `os.listdir` for sorting; sort explicitly.
  * Modularize so that the two programs have no repeated code.
  * Perhaps both use-cases can be handled by a single program with different inputs.
 
