@@ -4,9 +4,11 @@
 
 My actual diary is not found in a public repository. It was originally a single, long LaTeX file. I wrote a script to break it into sections, each section one diary entry, in the interest of the recognized good of modularity. Then I wrote the code in the present repository to compile either just the newest sections (because things sometimes go wrong in LaTeX and you would like to see what you've done) or to reassemble the parts into a whole diary.
 
+The code here generates a `.tex` file, compiles it twice (necessary to produce a table of contents), and finally opens the resulting PDF file.
+
 ### Organization and set-up
 
-This program runs in both Python 2 and 3, though there are no dependencies and hence no `requirements.txt` file. 
+This program runs in both Python 2 and 3, though there are no dependencies and hence no `requirements.txt` file. I am running on Mac OS and some `subprocess` instructions assume that environment.
 
 Directory `head_and_tail_matter` contain two necessary files: `preamble.tex` and `file_end.tex`; `head_text_matter_can_be_edited.tex` can be empty.
 
@@ -22,7 +24,7 @@ To compile and view the whole diary:
 python compile_latex_diary.py
 ```
 
-The filename `diary_composite.tex` is used, and prior versions are overwritten. The file must be compiled twice in order to produce a table of contents.
+The filename `diary_composite.tex` is used, and prior versions are overwritten. 
 
 ### Compilation of individual sections alone
 
@@ -32,7 +34,7 @@ To compile and view only a selection of those sections modified in the past `n` 
 python compile_sample_diary_entries.py n
 ```
 
-where `n` is the maximum age in hours that is to be included. This second program is useful for examining the typesetting of individual entries without having to compile the whole diary. It produces a filename of the form `diary_excerpts_n_sections.tex`, where `_n_` is an integer enumerating the sections included. After generating the `.tex` file it compiles twice and opens the file.
+where `n` is the maximum age in hours that is to be included. This second program is useful for examining the typesetting of individual entries without having to compile the whole diary. It produces a filename of the form `diary_excerpts_n_sections.tex`, where `_n_` is an integer enumerating the sections included. 
 
 ### To do
 
