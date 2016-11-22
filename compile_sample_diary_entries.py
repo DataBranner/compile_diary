@@ -1,5 +1,5 @@
 #!/bin/usr/python
-# 20161121
+# 20161122
 
 import os
 import subprocess
@@ -17,7 +17,7 @@ def assemble_whole(threshold, filename='diary_excerpts_{}_sections.tex'):
         whole = [f.read()]
 
     # Get all sections from `sections` directory.
-    sections = os.listdir('sections')
+    sections = sorted(os.listdir('sections')) # Sort because don't trust OS.
     current_time = time.time()
     earliest_time = current_time - threshold
     mtimes = [(os.stat(os.path.join('sections', section)).st_mtime, section)
@@ -58,6 +58,12 @@ def compile_latex(filename='diary_excerpts_{}_sections.tex'):
     print('Second run completed.')
     print('Now opening finished file.')
     subprocess.check_output(['open', filename.replace('.tex', '.pdf')])
+    clean = input('Delete all logs and LaTeX interim files? (defaults to yes)')
+    if not clean:
+        os.remove(filename.replace('.tex', '.toc'))
+        os.remove(filename.replace('.tex', '.aux'))
+        os.remove(filename.replace('.tex', '.out'))
+        os.remove(filename.replace('.tex', '.log'))
 
 def main():
     compile_latex()
