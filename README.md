@@ -32,7 +32,12 @@ To compile and view only a selection of those sections modified in the past `n` 
 python compile_sample_diary_entries.py n
 ```
 
-where `n` is the maximum age in hours that is to be included. This second program is useful for examining the typesetting of individual entries without having to compile the whole diary. The filename `diary_excerpts_5_sections.tex` is used, where `5` here indicates that five sections were included.
+where `n` is the maximum age in hours that is to be included. This second program is useful for examining the typesetting of individual entries without having to compile the whole diary. It produces a filename of the form `diary_excerpts_n_sections.tex`, where `_n_` is an integer enumerating the sections included. After generating the `.tex` file it compiles twice and opens the file.
+
+### To do
+
+ * Modularize so that the two programs have no repeated code.
+ * Perhaps both use-cases can be handled by a single program with different inputs.
 
 
 [end]
